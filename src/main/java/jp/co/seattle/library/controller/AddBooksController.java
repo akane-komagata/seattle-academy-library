@@ -56,7 +56,7 @@ public class AddBooksController {
             @RequestParam("description") String description,
             @RequestParam("author") String author,
             @RequestParam("publisher") String publisher,
-            @RequestParam("publish_date") String publish_date,
+            @RequestParam("publish_date") String publishDate,
             @RequestParam("thumbnail") MultipartFile file,
             @RequestParam("isbn") String isbn,
             Model model) {
@@ -68,7 +68,7 @@ public class AddBooksController {
         bookInfo.setAuthor(author);
         bookInfo.setDescription(description);
         bookInfo.setPublisher(publisher);
-        bookInfo.setPublishDate(publish_date);
+        bookInfo.setPublishDate(publishDate);
         bookInfo.setIsbn(isbn);
 
         // クライアントのファイルシステムにある元のファイル名を設定する
@@ -96,17 +96,17 @@ public class AddBooksController {
         try {
             DateFormat df = new SimpleDateFormat("yyyyMMdd");
             df.setLenient(false);
-            df.format(df.parse(publish_date));
+            df.format(df.parse(publishDate));
 
         } catch (ParseException p) {
-            model.addAttribute("error", "ISBNの桁数または半角数字が正しくありません<br>出版日は半角数字のYYYYMMDD形式で入力してください");
+            model.addAttribute("error", "出版日は半角数字のYYYYMMDD形式で入力してください");
             return "addBook";
         }
 
         boolean isIsbn = isbn.matches("[0-9]{10}||[0-9]{13}");
                         
         if (!isIsbn) {
-                     model.addAttribute("error", "ISBNの桁数または半角数字が正しくありません<br>出版日は半角数字のYYYYMMDD形式で入力してください");
+            model.addAttribute("error", "ISBNの桁数または半角数字が正しくありません");
                      return "addBook";
                      }
 

@@ -63,36 +63,24 @@
                         </c:if>
                     <div>
                         <span>書籍名</span><span class="care care2">必須</span>
-                        <c:if test="${!empty bookInfo}">
-                            <input type="text" name="title" value="${bookInfo.title}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                             <input type="text" name="title" autocomplete="off">
                         </c:if>
                     </div>
                     <div>
                         <span>著者名</span><span class="care care2">必須</span>
-                        <c:if test="${!empty bookInfo}">
-                            <input type="text" name="author" value="${bookInfo.author}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                             <input type="text" name="author" autocomplete="off">
                         </c:if>
                     </div>
                     <div>
                         <span>出版社</span><span class="care care2">必須</span>
-                        <c:if test="${!empty bookInfo}">
-                            <input type="text" name="publisher" value="${bookInfo.publisher}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                             <input type="text" name="publisher">
                         </c:if>
                     </div>
                     <div>
                         <span>出版日</span><span class="care care2">必須</span>
-                        <c:if test="${!empty bookInfo}">
-                            <input type="text" name="publish_date" value="${bookInfo.publish_date}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                         
                             <input type="text" name="publish_date">
@@ -100,21 +88,12 @@
                     </div>
                     <div>
                         <span>ISBN</span><span class="care care1">任意</span>
-                        <c:if test="${!empty bookInfo}">
-                        <%-- <c:if test="${!empty error}">
-                        <div class="error">${error}</div>
-                        </c:if> --%>
-                            <input type="text" name="isbn" value="${bookInfo.isbn}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                             <input type="text" name="isbn">
                         </c:if>
                     </div>
                     <div>
                         <span>説明文</span><span class="care care1">任意</span>
-                        <c:if test="${!empty bookInfo}">
-                            <input type="text" name="description" value="${bookInfo.description}">
-                        </c:if>
                         <c:if test="${empty bookInfo}">
                             <input type="text" name="description">
                         </c:if>
