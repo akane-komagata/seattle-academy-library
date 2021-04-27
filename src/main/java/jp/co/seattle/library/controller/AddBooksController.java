@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.mysql.jdbc.StringUtils;
+
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
 import jp.co.seattle.library.service.ThumbnailService;
@@ -93,6 +95,12 @@ public class AddBooksController {
             }
         }
         
+        if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
+                || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
+            model.addAttribute("error", "必須項目入力してください");
+            return "addBook";
+        }
+
         try {
             DateFormat df = new SimpleDateFormat("yyyyMMdd");
             df.setLenient(false);
