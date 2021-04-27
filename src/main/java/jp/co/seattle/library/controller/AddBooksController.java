@@ -97,7 +97,7 @@ public class AddBooksController {
         
         if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
                 || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
-            model.addAttribute("error", "必須項目入力してください");
+            model.addAttribute("error", "必須項目を入力してください");
             return "addBook";
         }
 
