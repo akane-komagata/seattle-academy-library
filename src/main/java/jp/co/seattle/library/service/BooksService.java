@@ -78,6 +78,25 @@ public class BooksService {
         jdbcTemplate.update(sql);
     }
 
+
+    //SQLデータの編集
+    public void editBook(BookDetailsInfo bookInfo) {
+
+        String sql = "UPDATE books set title ='" + bookInfo.getTitle() + "',description ='" + bookInfo.getDescription()
+                + "',author ='" + bookInfo.getAuthor()
+                + "',publisher = '" + bookInfo.getPublisher()
+                + "',publish_date ='" + bookInfo.getPublishDate()
+                + "',thumbnail_name = '" + bookInfo.getThumbnailName()
+                + "',thumbnail_url = '" + bookInfo.getThumbnailUrl()
+                + "',isbn = '" + bookInfo.getIsbn()
+                + "',upd_date =" + "sysdate()"
+                + " where id = " + bookInfo.getBookId() + ";";
+
+        jdbcTemplate.update(sql);
+
+    }
+
+
     public void deletingBook(int bookId) {
         String sql = "DELETE FROM books WHERE id =" + bookId;
         jdbcTemplate.update(sql);
