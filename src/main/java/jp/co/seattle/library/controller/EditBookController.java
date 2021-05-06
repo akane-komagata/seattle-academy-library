@@ -36,6 +36,13 @@ public class EditBookController {
     @Autowired
     private ThumbnailService thumbnailService;
 
+    /**
+     * 書籍情報を取得する
+     * @param locale ロケール情報
+     * @param bookId 編集
+     * @param model
+     * @return 遷移先画面
+     */
     //jspから値を取得、Javaとつなげる
     @RequestMapping(value = "/editBook", method = RequestMethod.POST) //value＝actionで指定したパラメータ
     //RequestParamでname属性を取得
@@ -130,10 +137,7 @@ public class EditBookController {
         // 書籍情報を新規登録する
         booksService.editBook(bookInfo);
 
-        model.addAttribute("resultMessage", "更新完了");
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
-
-        // TODO 登録した書籍の詳細情報を表示するように実装
 
         //  詳細画面に遷移する
         return "details";

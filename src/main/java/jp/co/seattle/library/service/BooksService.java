@@ -80,6 +80,11 @@ public class BooksService {
 
 
     //SQLデータの編集
+    /**
+     * 書籍を編集する
+     * 
+     * @param bookInfo 書籍情報
+     */
     public void editBook(BookDetailsInfo bookInfo) {
 
         String sql = "UPDATE books set title ='" + bookInfo.getTitle() + "',description ='" + bookInfo.getDescription()
