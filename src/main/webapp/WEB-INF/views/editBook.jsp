@@ -19,28 +19,20 @@
 <body class="wrapper">
       
     <header>
-            
         <div class="left">
                   <img class="mark" src="resources/img/logo.png" />       
-            <div class="logo">Seattle Library</div>
-                
+            <div class="logo">Seattle Library</div>      
         </div>
-            
-        <div class="right">
-                  
+        <div class="right">     
             <ul>
-                        
-                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>         
-                <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>       
-            </ul>
-                
-        </div>
-          
+                <li><a href="<%=request.getContextPath()%>/home" class="menu">Home</a></li>
+                <li><a href="<%=request.getContextPath()%>/">ログアウト</a></li>
+            </ul>    
+        </div> 
     </header>
-      
     <main>
-        <form action="<%=request.getContextPath()%>/insertBook" method="post" enctype="multipart/form-data" id="data_upload_form">
-            <h1>書籍の追加</h1>
+        <form action="<%=request.getContextPath()%>/updateBook" method="post" enctype="multipart/form-data" id="data_upload_form">
+            <h1>書籍の変更</h1>
             <div class="content_body add_book_content">
                 <div>
                     <span>書籍の画像</span> <span class="care care1">任意</span>
@@ -51,50 +43,67 @@
                 </div>
                 <div class="content_right">
                 <c:if test="${!empty error}">
-                        <div class="error">${error}</div>
-                        </c:if>
+                    <div class="error">${error}</div>
+                </c:if>
                     <div>
                         <span>書籍名</span><span class="care care2">必須</span>
-                        <c:if test="${empty bookInfo}">
+                        <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "title" value = "${bookDetailsInfo.title}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="title" autocomplete="off">
                         </c:if>
                     </div>
                     <div>
                         <span>著者名</span><span class="care care2">必須</span>
-                        <c:if test="${empty bookInfo}">
+                         <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "author" value = "${bookDetailsInfo.author}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="author" autocomplete="off">
                         </c:if>
                     </div>
                     <div>
                         <span>出版社</span><span class="care care2">必須</span>
-                        <c:if test="${empty bookInfo}">
+                         <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "publisher" value = "${bookDetailsInfo.publisher}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="publisher">
                         </c:if>
                     </div>
                     <div>
                         <span>出版日</span><span class="care care2">必須</span>
-                        <c:if test="${empty bookInfo}">
-                        
+                         <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "publish_date" value = "${bookDetailsInfo.publishDate}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="publish_date">
                         </c:if>  
                     </div>
                     <div>
                         <span>ISBN</span><span class="care care1">任意</span>
-                        <c:if test="${empty bookInfo}">
+                         <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "isbn" value = "${bookDetailsInfo.isbn}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="isbn">
                         </c:if>
                     </div>
                     <div>
                         <span>説明文</span><span class="care care1">任意</span>
-                        <c:if test="${empty bookInfo}">
+                         <c:if test = "${!empty bookDetailsInfo}">
+                            <input type = "text" name = "description" value = "${bookDetailsInfo.description}"> 
+                        </c:if>
+                        <c:if test="${empty bookDetailsInfo}">
                             <input type="text" name="description">
                         </c:if>
                     </div>
-                    <input type="hidden" id="bookId" name="bookId" value="${bookInfo.bookId}">
+                    <input type="hidden" id="bookId" name="bookId" value="${bookDetailsInfo.bookId}">
                 </div>
             </div>
             <div class="addBookBtn_box">
-                <button type="submit" id="add-btn" class="btn_addBook">登録</button>
+                <button type="submit" id="add-btn" class="btn_addBook">更新</button>
             </div>
         </form>
     </main>
