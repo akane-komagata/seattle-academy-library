@@ -64,23 +64,22 @@ public class BulkBookController {
         List<String[]> booklist = new ArrayList<String[]>();
         //エラーを格納するリストを作成
         List<String> errorlist = new ArrayList<String>();
-        int a = 0;
+        int number = 0;
         String line = null;
-        try {
-            InputStream stream = csv_file.getInputStream();
-            Reader reader = new InputStreamReader(stream);
-            BufferedReader buf = new BufferedReader(reader);
+        try (InputStream stream = csv_file.getInputStream();
+                Reader reader = new InputStreamReader(stream);
+                BufferedReader buf = new BufferedReader(reader);) {
             while ((line = buf.readLine()) != null) {
                 //カンマで区切って配列に格納
                 String[] data = new String[6];
                 data = line.split(",", -1);
                 booklist.add(data);
-                a++;
+                number++;
 
                 //必須項目のチェック
                 if (StringUtils.isNullOrEmpty(data[0]) || StringUtils.isNullOrEmpty(data[1])
                         || StringUtils.isNullOrEmpty(data[2]) || StringUtils.isNullOrEmpty(data[3])) {
-                    errorlist.add(a + "行目に必須項目がありません");
+                    errorlist.add(number + "行目に必須項目がありません");
                 }
                 //文字列形式のチェック
                 //出版日のチェック
@@ -90,13 +89,13 @@ public class BulkBookController {
                     df.format(df.parse(data[3]));
 
                 } catch (ParseException p) {
-                    errorlist.add(a + "行目の出版日は半角数字のYYYYMMDD形式で入力してください");
+                    errorlist.add(number + "行目の出版日は半角数字のYYYYMMDD形式で入力してください");
                 }
 
                 //ISBNのチェック
                 boolean isIsbn = data[4].matches("([0-9]{10}||[0-9]{13})?$");
                 if (!isIsbn) {
-                    errorlist.add(a + "行目のISBNの桁数または半角数字が正しくありません");
+                    errorlist.add(number + "行目のISBNの桁数または半角数字が正しくありません");
                 }
             }
                 //エラーメッセージの表示
