@@ -110,7 +110,7 @@ public class EditBookController {
                 return "editBook";
             }
         }
-        
+
         if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
                 || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
             model.addAttribute("error", "必須項目を入力してください");
@@ -128,17 +128,16 @@ public class EditBookController {
         }
 
         boolean isIsbn = isbn.matches("[0-9]{10}||[0-9]{13}");
-                        
+
         if (!isIsbn) {
             model.addAttribute("error", "出版日は半角数字のYYYYMMDD形式で入力してください<br>ISBNの桁数または半角数字が正しくありません");
             return "editBook";
-                     }
+        }
 
         // 書籍情報を新規登録する
         booksService.editBook(bookInfo);
-
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
-
+        model.addAttribute("lendingStatus", "貸出可");
         //  詳細画面に遷移する
         return "details";
     }
