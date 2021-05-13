@@ -20,11 +20,18 @@ public class LendingController {
     final static Logger logger = LoggerFactory.getLogger(LendingController.class);
 
     @Autowired
-    private RentService RentService;
+    private RentService rentService;
 
     @Autowired
     private BooksService booksService;
 
+    /**
+     * 貸出書籍の登録
+     * @param locale
+     * @param bookId
+     * @param model
+     * @return　details
+     */
     @Transactional
     @RequestMapping(value = "/rentBook", method = RequestMethod.POST, produces = "text/plain;charset=utf-8")
     public String borrowingBook(Locale locale,
@@ -33,7 +40,7 @@ public class LendingController {
         logger.info("Welcome borrowingBook.java! The client locale is {}.", locale);
 
         //貸出書籍の登録
-        RentService.rentBook(bookId);
+        rentService.rentBook(bookId);
         //書籍の詳細情報の取得
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
         model.addAttribute("lendingStatus", "貸出中");
@@ -48,7 +55,7 @@ public class LendingController {
             Model model) {
         logger.info("Welcome returnBook.java! The client locale is {}.", locale);
         //返却する（貸出IDの削除）
-        RentService.deletingRentBook(bookId);
+        rentService.deletingRentBook(bookId);
         //書籍の詳細情報の取得
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
         model.addAttribute("lendingStatus", "貸出可");

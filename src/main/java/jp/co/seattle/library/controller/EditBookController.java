@@ -20,6 +20,7 @@ import com.mysql.jdbc.StringUtils;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
+import jp.co.seattle.library.service.RentService;
 import jp.co.seattle.library.service.ThumbnailService;
 
 /**
@@ -35,6 +36,9 @@ public class EditBookController {
 
     @Autowired
     private ThumbnailService thumbnailService;
+
+    @Autowired
+    private RentService rentService;
 
     /**
      * 書籍情報を取得する
@@ -136,8 +140,17 @@ public class EditBookController {
 
         // 書籍情報を新規登録する
         booksService.editBook(bookInfo);
+
+        int number = rentService.rentCount(bookId);
+        //書籍IDがあるかないか（貸出状況）によって処理を変える
+        if (number == 1) {
+            model.addAttribute("lendingStatus", "貸出中");
+        } else {
+            model.addAttribute("lendingStatus", "貸出可");
+            //一覧情報の取得
+        }
+
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
-        model.addAttribute("lendingStatus", "貸出可");
         //  詳細画面に遷移する
         return "details";
     }

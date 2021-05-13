@@ -27,7 +27,7 @@ public class DeleteBookController {
     private BooksService booksService;
 
     @Autowired
-    private RentService RentService;
+    private RentService rentService;
 
     /**
      * 対象書籍を削除する
@@ -46,7 +46,7 @@ public class DeleteBookController {
         logger.info("Welcome delete! The client locale is {}.", locale);
 
         //貸出情報の確認
-        int number = RentService.rentCount(bookId);
+        int number = rentService.rentCount(bookId);
         //書籍IDがあるかないか（貸出状況）によって処理を変える
         if (number == 1) {
             model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));

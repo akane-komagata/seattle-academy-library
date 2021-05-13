@@ -78,6 +78,15 @@ public class BooksService {
         jdbcTemplate.update(sql);
     }
 
+    /**
+     * 最大値のIDを取得する
+     * @return getBookId
+     */
+    public int getBookId() {
+        String sql = "SELECT MAX(ID)FROM books";
+        int getBookId = jdbcTemplate.queryForObject(sql, Integer.class);
+        return getBookId;
+    }
 
     //SQLデータの編集
     /**
@@ -106,4 +115,5 @@ public class BooksService {
         String sql = "DELETE FROM books WHERE id =" + bookId;
         jdbcTemplate.update(sql);
     }
+
 }

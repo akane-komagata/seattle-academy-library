@@ -26,7 +26,7 @@ public class DetailsController {
     private BooksService bookdService;
 
     @Autowired
-    private RentService RentService;
+    private RentService rentService;
 
     /**
      * 詳細画面に遷移する
@@ -43,7 +43,7 @@ public class DetailsController {
         // デバッグ用ログ
         logger.info("Welcome detailsControler.java! The client locale is {}.", locale);
 
-        int number = RentService.rentCount(bookId);
+        int number = rentService.rentCount(bookId);
         //書籍IDがあるかないか（貸出状況）によって処理を変える
         if (number == 1) {
             model.addAttribute("lendingStatus", "貸出中");
