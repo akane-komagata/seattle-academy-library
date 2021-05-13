@@ -20,6 +20,7 @@ import com.mysql.jdbc.StringUtils;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
+import jp.co.seattle.library.service.RentService;
 import jp.co.seattle.library.service.ThumbnailService;
 
 /**
@@ -35,6 +36,9 @@ public class EditBookController {
 
     @Autowired
     private ThumbnailService thumbnailService;
+
+    @Autowired
+    private RentService rentService;
 
     /**
      * 書籍情報を取得する
@@ -110,7 +114,7 @@ public class EditBookController {
                 return "editBook";
             }
         }
-        
+
         if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
                 || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
             model.addAttribute("error", "必須項目を入力してください");
@@ -128,17 +132,25 @@ public class EditBookController {
         }
 
         boolean isIsbn = isbn.matches("[0-9]{10}||[0-9]{13}");
-                        
+
         if (!isIsbn) {
             model.addAttribute("error", "出版日は半角数字のYYYYMMDD形式で入力してください<br>ISBNの桁数または半角数字が正しくありません");
             return "editBook";
-                     }
+        }
 
         // 書籍情報を新規登録する
         booksService.editBook(bookInfo);
 
-        model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
+        int number = rentService.rentCount(bookId);
+        //書籍IDがあるかないか（貸出状況）によって処理を変える
+        if (number == 1) {
+            model.addAttribute("lendingStatus", "貸出中");
+        } else {
+            model.addAttribute("lendingStatus", "貸出可");
+            //一覧情報の取得
+        }
 
+        model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
         //  詳細画面に遷移する
         return "details";
     }
