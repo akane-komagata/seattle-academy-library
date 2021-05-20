@@ -56,8 +56,6 @@ public class BooksService {
         return bookDetailsInfo;
     }
 
-
-
     /**
      * 書籍を登録する
      *
@@ -110,10 +108,21 @@ public class BooksService {
 
     }
 
-
     public void deletingBook(int bookId) {
         String sql = "DELETE FROM books WHERE id =" + bookId;
         jdbcTemplate.update(sql);
+    }
+
+    /**
+     * 検索したワードを取得
+     * @param searchTitle
+     * @return searchList
+     */
+    public List<BookInfo> searchBookList(String searchTitle) {
+        List<BookInfo> searchList = jdbcTemplate.query(
+                "SELECT * FROM books WHERE title LIKE '%" + searchTitle + "%' ORDER BY title ASC",
+                new BookInfoRowMapper());
+        return searchList;
     }
 
 }
