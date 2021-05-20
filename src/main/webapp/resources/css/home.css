@@ -1,6 +1,6 @@
 input {
     outline: 0;
-    border: 0;
+    border:  0;
     background: transparent;
 }
 
@@ -38,7 +38,7 @@ input {
 }
 
 .body {
-    width: 100%;
+    width: 100%; 
     text-align: center;
 }
 
@@ -63,6 +63,7 @@ input {
     background-color: red;
     color: white;
 }
+
 
 /* ここから追加 */
 .search_box {
@@ -101,6 +102,7 @@ input {
     display: inline-block;
     margin-right: 10px;
     line-height: 1.5;
+    width: 15%;
 }
 .book_thumnail {
     position: relative;

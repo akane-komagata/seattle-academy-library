@@ -36,10 +36,16 @@
             <div class="content_body add_book_content">
                 <div>
                     <span>書籍の画像</span> <span class="care care1">任意</span>
+                    
                     <div class="book_thumnail">
-                        <img class="book_noimg" src="resources/img/noImg.png">
-                    </div>
+                    <c:if test = "${bookDetailsInfo == 'null'}">
+                            <img class="book_noimg" src="resources/img/noImg.png">
+                        </c:if>
+                        <c:if test="${bookDetailsInfo != 'null'}">
+                            <img class="book_noimg" src="${bookDetailsInfo.thumbnailUrl}">
+                        </c:if>
                     <input type="file" accept="image/*" name="thumbnail" id="thumbnail">
+                </div> 
                 </div>
                 <div class="content_right">
                 <c:if test="${!empty error}">
