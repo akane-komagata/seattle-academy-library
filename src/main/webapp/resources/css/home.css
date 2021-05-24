@@ -1,290 +1,453 @@
-input {
-    outline: 0;
-    border:  0;
-    background: transparent;
-}
+@media screen and (min-width: 780px) {
+	.full-width-img {
+		margin: auto;
+		width: 90%;
+	}
+	input {
+		outline: 0;
+		border: 0;
+		background: transparent;
+	}
+	.icon {
+		width: 120px;
+		margin: 5px 0 0 10px;
+	}
+	.icon2 {
+		width: 160px;
+	}
+	.icon1 {
+		width: 34px;
+		vertical-align: top;
+		margin-top: 28px;
+	}
+	.top-right {
+		float: right;
+		text-align: right;
+		height: 90px;
+		z-index: 10;
+		position: relative;
+		margin-top: 5px;
+		margin-right: 5px;
+	}
+	.top-right li {
+		display: inline-block;
+		font-size: 16px;
+		list-style: none;
+		width: 80px;
+		margin: 35px 30px 0 0;
+	}
+	.body {
+		width: 100%;
+		text-align: center;
+	}
+	.body form {
+		border: none;
+		display: inline-block;
+	}
+	.care {
+		padding: 0 10px;
+		margin-left: 15px;
+		display: inline-block;
+		font-size: 10px;
+	}
+	.care1 {
+		background-color: gray;
+		color: white;
+	}
+	.care2 {
+		background-color: red;
+		color: white;
+	}
 
-.icon {
-    width: 120px;
-    margin: 5px 0 0 10px;
-}
+	/* ここから追加 */
+	.search_box {
+		position: relative;
+		margin-left: -5px;
+	}
+	.search1 {
+		border-radius: 20px 0 0 20px;
+		font-size: 15px;
+		width: 325px;
+		padding: 4px 10px;
+		border: 1px solid #2196f3;
+	}
+	.search1:hover {
+		box-shadow: 0 0 2px black;
+	}
+	input[id=searched] {
+		position: relative;
+		max-width: 300px;
+		margin-bottom: 20px
+	}
+	input[id=sbox] {
+		top: 0;
+		width: 170px;
+		border-radius: 25px;
+		outline: 0;
+		background: #eee;
+		height: 30px;
+	}
+	button.sbtn {
+		height: 25px;
+		width: 35px;
+		left: 250px;
+		top: 0;
+		background: #bfda82;
+		color: #fff;
+		border: none;
+		border-radius: 25px 25px 25px 0;
+	}
+	.sbtn.fa-search {
+		font-size: 20px;
+		position: absolute;
+		top: 30%;
+		left: 30%;
+	}
+	.sbtn:hover {
+		color: 888;
+	}
+	.booklist {
+		margin-top: 15px;
+	}
+	.books {
+		display: inline-block;
+		margin: 70px;
+		line-height: 1.5;
+		word-break: break-all;
+	}
+	.book_thumnail {
+		position: relative;
+		z-index: 10;
+		width: 200px;
+		height: 250px;
+	}
+	img.book_noimg, img.book_img {
+		height: 200px;
+		width: 200px;
+		bottom: 10px;
+	}
+	img.book_img {
+		height: 200px;
+		width: 200px;
+		left: 20px;
+	}
+	.book_thumnail a {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+	.book_title {
+		font-size: 20px;
+		text-align: center;
+	}
+	.book_author {
+		font-size: 13px;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.book_publisher, .book_publish_date {
+		font-size: 12px;
+	}
+	button.btn_addBook, button.btn_editBook, button.btn_deleteBook, button.btn_rentBook,
+		button.btn_returnBook, button.btn_bulkRegist {
+		display: inline-block;
+		font-size: 16px;
+		font-weight: bold;
+		line-height: 1.5;
+		text-align: center;
+		padding: 8px 12px;
+		margin: 10px 5px 0;
+		background-color: #7db4e6;
+		border-bottom: solid 2px rgba(0, 0, 0, .2);
+		box-shadow: inset 0 2px 0 rgba(255, 255, 255, .2), 0 2px 2px
+			rgba(0, 0, 0, .2);
+		color: #fff;
+	}
+	*, *:before, *:after {
+		-webkit-box-sizing: inherit;
+		box-sizing: inherit;
+	}
+	html {
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+		font-size: 62.5%;
+	}
 
-.icon2 {
-    width: 160px;
-}
+	/* 書籍登録ボタン */
+	.btn_add_book, a.btn_add_book, button.btn_add_book {
+		font-size: 1.6rem;
+		font-weight: 700;
+		line-height: 1.5;
+		position: relative;
+		display: inline-block;
+		padding: 1rem 4rem;
+		margin: 0px 20px;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		text-align: center;
+		vertical-align: middle;
+		text-decoration: none;
+		letter-spacing: 0.1em;
+		color: #212529;
+		border-radius: 0.5rem;
+	}
+	a.btn_add_book {
+		margin-bottom: 12px;
+		padding: 0;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		border-radius: 0;
+	}
+	a.btn_add_book span {
+		position: relative;
+		display: block;
+		margin-top: 30px;
+		padding: 1.25rem 3rem;
+		color: #000;
+		border: 2px solid #000;
+		border-radius: 0.5rem;
+		background: #fff;
+	}
+	a.btn_add_book:before {
+		position: absolute;
+		bottom: -8px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 14px;
+		content: "";
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		border: 2px solid #000;
+		border-top: 1px solid #000;
+		border-radius: 0 0 0.5rem 0.5rem;
+		background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent
+			2px, transparent 5px);
+		background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px,
+			transparent 5px);
+		background-size: 7px 7px;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	a.btn_add_book:hover {
+		-webkit-transform: translate(0, 3px);
+		transform: translate(0, 3px);
+	}
+	a.btn_add_book:hover:before {
+		bottom: -5px;
+	}
+	a.btn_add_book:active {
+		-webkit-transform: translate(0, 7px);
+		transform: translate(0, 7px);
+	}
+	a.btn_add_book:active:before {
+		bottom: -1px;
+	}
+	/* 一括登録ボタン */
+	.btn_bulk_book, a.btn_bulk_book, button.btn_bulk_book {
+		font-size: 1.6rem;
+		font-weight: 700;
+		line-height: 1.5;
+		position: relative;
+		display: inline-block;
+		padding: 1rem 4rem;
+		margin: 0px 20px;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		text-align: center;
+		vertical-align: middle;
+		text-decoration: none;
+		letter-spacing: 0.1em;
+		color: #212529;
+		border-radius: 0.5rem;
+	}
+	a.btn_bulk_book {
+		margin-bottom: 12px;
+		padding: 0;
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		border-radius: 0;
+	}
+	a.btn_bulk_book span {
+		position: relative;
+		display: block;
+		margin-top: 30px;
+		padding: 1.25rem 3rem;
+		color: #000;
+		border: 2px solid #000;
+		border-radius: 0.5rem;
+		background: #fff;
+	}
+	a.btn_bulk_book:before {
+		position: absolute;
+		bottom: -8px;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 14px;
+		content: "";
+		-webkit-transition: all 0.3s;
+		transition: all 0.3s;
+		border: 2px solid #000;
+		border-top: 1px solid #000;
+		border-radius: 0 0 0.5rem 0.5rem;
+		background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent
+			2px, transparent 5px);
+		background-image: repeating-linear-gradient(-45deg, #000, #000 1px, transparent 2px,
+			transparent 5px);
+		background-size: 7px 7px;
+		-webkit-backface-visibility: hidden;
+		backface-visibility: hidden;
+	}
+	a.btn_bulk_book:hover {
+		-webkit-transform: translate(0, 3px);
+		transform: translate(0, 3px);
+	}
+	a.btn_bulk_book:hover:before {
+		bottom: -5px;
+	}
+	a.btn_bulk_book:active {
+		-webkit-transform: translate(0, 7px);
+		transform: translate(0, 7px);
+	}
+	a.btn_bulk_book:active:before {
+		bottom: -1px;
+	}
+	button.btn_editBook {
+		background-color: #9ec34b;
+	}
+	button.btn_deleteBook {
+		background-color: #e94047;
+	}
+	button.btn_rentBook {
+		background-color: #FF9933;
+	}
+	button.btn_returnBook {
+		background-color: #7db4e6;
+	}
+	button.btn_bulkRegist {
+		background-color: #FF9966;
+	}
+	a:hover, button:hover {
+		opacity: 0.5;
+	}
 
-.icon1 {
-    width: 34px;
-    vertical-align: top;
-    margin-top: 28px;
+	/* ここからaddbook */
+	.add_book_content, .detail_book_content {
+		justify-content: center;
+		margin-top: 20px;
+	}
+	.add_book_content .content_right, .detail_book_content .content_right {
+		margin-left: 20px;
+	}
+	.content_right input, .detail_book_content .content_right p {
+		border-bottom: 1px solid #cccccc;
+		margin: 5px 0 15px;
+		font-size: 15px;
+	}
+	.detail_book_content .content_left {
+		width: 250px;
+	}
+	.detail_book_content .content_right {
+		width: 275px;
+	}
+	.detail_book_content .content_right p {
+		padding: 5px 0;
+		width: 99.2%;
+		text-indent: 1em;
+		vertical-align: middle;
+	}
+	.content_right input:-webkit-autofill {
+		-webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
+	}
+	.addBookBtn_box {
+		text-align: center;
+	}
+	.edtDelBookBtn_box {
+		display: flex;
+		justify-content: center;
+	}
+	.button.btn_bulkRegist {
+		display: flex;
+		justify-content: center;
+	}
+	button.btn_addBook, button.btn_editBook, button.btn_deleteBook, button.btn_rentBook,
+		button.btn_returnBook, button.btn_bulkRegist {
+		border-radius: 30px;
+		width: 120px;
+		margin-top: 20px;
+		border: none;
+		border-bottom: solid 2px rgba(0, 0, 0, .2);
+	}
+	button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,
+		button.btn_rentBook:focus, button.btn_returnBook:focus, button.btn_bulkRegist:focus
+		{
+		outline: none;
+	}
+	button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,
+		button.btn_rentBook:hover, button.btn_returnBook:hover, button.btn_bulkRegist:hover
+		{
+		cursor: pointer;
+	}
+	hr.border_add {
+		width: 850px;
+		margin: revert;
+	}
+	.uploadButton {
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		border-radius: 3px;
+		background: #099;
+		color: #fff;
+		text-align: center;
+		padding: 10px;
+		line-height: 30px;
+		width: 120px;
+		cursor: pointer;
+	}
+	.uploadButton:hover {
+		background: #0aa;
+	}
+	.uploadButton input[type=file] {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 120px;
+		height: 100%;
+		cursor: pointer;
+		opacity: 0;
+	}
+	.uploadValue {
+		display: none;
+		background: rgba(255, 255, 255, 0.2);
+		border-radius: 3px;
+		padding: 3px;
+		color: #ffffff;
+	}
+	.bulk_form {
+		text-align: center;
+	}
+	.bulk_form h2 {
+		margin-bottom: 20px
+	}
+	.bulk_form .caution {
+		text-align: left;
+		margin: 10px 0px 30px 400px;
+	}
+	.bulk_form .caution p {
+		color: #fa8072;
+	}
 }
-
-.top-right {
-    float: right;
-    text-align: right;
-    height: 90px;
-    z-index: 10;
-    position: relative;
-    margin-top: 5px;
-    margin-right: 5px;
-}
-
-.top-right li {
-    display: inline-block;
-    font-size: 16px;
-    list-style: none;
-    width: 80px;
-    margin: 35px 30px 0 0;
-}
-
-.body {
-    width: 100%; 
-    text-align: center;
-}
-
-.body form {
-    border: none;
-    display: inline-block;
-}
-
-.care {
-    padding: 0 10px;
-    margin-left: 15px;
-    display: inline-block;
-    font-size: 10px;
-}
-
-.care1 {
-    background-color: gray;
-    color: white;
-}
-
-.care2 {
-    background-color: red;
-    color: white;
-}
-
-
-/* ここから追加 */
-.search_box {
-    position: relative;
-    margin-left: -5px;
-}
-
-.search1 {
-    border-radius: 20px 0 0 20px;
-    font-size: 15px;
-    width: 325px;
-    padding: 4px 10px;
-    border: 1px solid #2196f3;
-}
-
-.search1:hover {
-    box-shadow: 0 0 2px black;
-}
-
-.search_box:after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f002";
-    position: absolute;
-    top: 7px;
-    right: 12px;
-    color: white;
-    pointer-events: none;
-}
-
-.booklist {
-    margin-top: 15px;
-}
-
-.books {
-    display: inline-block;
-    margin-right: 10px;
-    line-height: 1.5;
-    width: 15%;
-}
-.book_thumnail {
-    position: relative;
-    width: 200px;
-    height: 250px;
-}
-img.book_noimg, img.book_img{
-    height:200px;
-    width: 200px;
-    bottom: 10px;
-}
- img.book_img{
-    height:200px;
-    width: 200px;
-    left: 20px;
-}
-.book_thumnail a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height:100%;
-    width: 100%;
-}
-
-.book_title {
-    font-size: 16px;
-    text-align: center;
-}
-
-.book_author {
-    font-size: 13px;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
-.book_publisher, .book_publish_date {
-    font-size: 12px;
-}
-
-a.btn_add_book,a.btn_bulk_book, button.btn_addBook,button.btn_editBook, button.btn_deleteBook,button.btn_rentBook,button.btn_returnBook,button.btn_bulkRegist {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.5;
-    text-align: center;
-    padding: 8px 12px;
-    margin: 10px 5px 0;
-    background-color: #7db4e6;
-    border-bottom: solid 2px rgba(0, 0, 0, .2);
-    box-shadow: inset 0 2px 0 rgba(255, 255, 255, .2), 0 2px 2px
-        rgba(0, 0, 0, .2);
-    color: #fff;
-}
-a.btn_bulk_book{
-	background-color: #66cdaa;
-}
-button.btn_editBook{
-    background-color: #9ec34b;
-}
-button.btn_deleteBook {
-    background-color: #e94047;
-}
-button.btn_rentBook{
-    background-color: #FF9933;
-}
-button.btn_returnBook {
-    background-color: #7db4e6;
-}
-button.btn_bulkRegist {
-	background-color: #FF9966;
-}
-
-a:hover, button:hover {
-    opacity: 0.5;
-}
-
-/* ここからaddbook */
-.add_book_content, .detail_book_content {
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.add_book_content .content_right, .detail_book_content .content_right {
-    margin-left: 20px;
-}
-.content_right input, .detail_book_content .content_right p {
-    border-bottom: 1px solid #cccccc;
-    margin: 5px 0 15px;
-    font-size: 15px;
-}
-.detail_book_content .content_left{
-    width: 250px;
-}
-.detail_book_content .content_right{
-    width: 275px;
-}
-.detail_book_content .content_right p{
-    padding: 5px 0;
-    width: 99.2%;
-    text-indent: 1em;
-    vertical-align: middle;
-
-}
-.content_right input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset;
-}
-.addBookBtn_box{
-    text-align: center;
-}
-.edtDelBookBtn_box {
-    display: flex;
-    justify-content: center;
-}
-.button.btn_bulkRegist{
-	    display: flex;
-    justify-content: center;
-}
-
-
-button.btn_addBook, button.btn_editBook, button.btn_deleteBook,button.btn_rentBook,button.btn_returnBook,button.btn_bulkRegist {
-    border-radius: 30px;
-    width: 120px;
-    margin-top: 20px;
-    border: none;
-    border-bottom: solid 2px rgba(0, 0, 0, .2);
-}
-button.btn_addBook:focus, button.btn_editBook:focus, button.btn_deleteBook:focus,button.btn_rentBook:focus,button.btn_returnBook:focus,button.btn_bulkRegist:focus {
-    outline: none;
-}
-button.btn_addBook:hover, button.btn_editBook:hover, button.btn_deleteBook:hover,button.btn_rentBook:hover,button.btn_returnBook:hover,button.btn_bulkRegist:hover {
-    cursor: pointer;
-}
-
-hr.border_add {
-	width:850px;
-	margin: revert;
-}
-
-.uploadButton {
-    display:inline-block;
-    position:relative;
-    overflow:hidden;
-    border-radius:3px;
-    background:#099;
-    color:#fff;
-    text-align:center;
-    padding:10px;
-    line-height:30px;
-    width:120px;
-    cursor:pointer;
-}
-.uploadButton:hover {
-    background:#0aa;
-}
-.uploadButton input[type=file] {
-    position:absolute;
-    top:0;
-    left:0;
-    width:120px;
-    height:100%;
-    cursor:pointer;
-    opacity:0;
-}
-.uploadValue {
-    display:none;
-    background:rgba(255,255,255,0.2);
-    border-radius:3px;
-    padding:3px;
-    color:#ffffff;
-}
-
-.bulk_form {
-	text-align: center;
-}
-.bulk_form h2{
-	margin-bottom:20px
-}
-.bulk_form .caution{
-	text-align:left;
-	margin:10px 0px 30px 400px;
-}
-.bulk_form .caution p{
-	color:#fa8072;
-}
-
