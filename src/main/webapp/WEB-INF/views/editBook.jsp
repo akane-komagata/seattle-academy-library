@@ -20,7 +20,7 @@
       
     <header>
         <div class="left">
-                  <img class="mark" src="resources/img/logo.png" />       
+                  <img class="mark" src="resources/img/logo2.png" />       
             <div class="logo">Seattle Library</div>      
         </div>
         <div class="right">     
@@ -38,14 +38,14 @@
                     <span>書籍の画像</span> <span class="care care1">任意</span>
                     
                     <div class="book_thumnail">
-                    <c:if test = "${bookDetailsInfo == 'null'}">
+                    <c:if test = "${bookDetailsInfo.thumbnailUrl == 'null'}">
                             <img class="book_noimg" src="resources/img/noImg.png">
                         </c:if>
-                        <c:if test="${bookDetailsInfo != 'null'}">
+                        <c:if test="${bookDetailsInfo.thumbnailUrl != 'null'}">
                             <img class="book_noimg" src="${bookDetailsInfo.thumbnailUrl}">
                         </c:if>
+                        </div>
                     <input type="file" accept="image/*" name="thumbnail" id="thumbnail">
-                </div> 
                 </div>
                 <div class="content_right">
                 <c:if test="${!empty error}">
