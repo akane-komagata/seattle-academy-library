@@ -21,7 +21,7 @@
     <header>
             
         <div class="left">
-                  <img class="mark" src="resources/img/logo.png" />       
+                  <img class="mark" src="resources/img/logo2.png" />       
             <div class="logo">Seattle Library</div>
                 
         </div>
