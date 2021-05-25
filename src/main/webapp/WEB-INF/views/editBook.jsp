@@ -44,8 +44,8 @@
                         <c:if test="${bookDetailsInfo.thumbnailUrl != 'null'}">
                             <img class="book_noimg" src="${bookDetailsInfo.thumbnailUrl}">
                         </c:if>
+                        </div>
                     <input type="file" accept="image/*" name="thumbnail" id="thumbnail">
-                </div> 
                 </div>
                 <div class="content_right">
                 <c:if test="${!empty error}">
