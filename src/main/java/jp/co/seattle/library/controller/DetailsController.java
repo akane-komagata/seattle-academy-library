@@ -44,11 +44,17 @@ public class DetailsController {
         logger.info("Welcome detailsControler.java! The client locale is {}.", locale);
 
         int number = rentService.rentCount(bookId);
+
         //書籍IDがあるかないか（貸出状況）によって処理を変える
         if (number == 1) {
+            model.addAttribute("rentDisabled", "disabled");
             model.addAttribute("lendingStatus", "貸出中");
+
+
         } else {
+            model.addAttribute("returnDisabled", "disabled");
             model.addAttribute("lendingStatus", "貸出可");
+
             //一覧情報の取得
         }
 

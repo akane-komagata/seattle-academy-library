@@ -43,6 +43,8 @@ public class LendingController {
         rentService.rentBook(bookId);
         //書籍の詳細情報の取得
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
+        model.addAttribute("disabled", "disabled");
+
         model.addAttribute("lendingStatus", "貸出中");
         //貸出登録後、詳細画面のままにする
         return "details";
@@ -58,6 +60,8 @@ public class LendingController {
         rentService.deletingRentBook(bookId);
         //書籍の詳細情報の取得
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
+        model.addAttribute("returnDisabled", "disabled");
+
         model.addAttribute("lendingStatus", "貸出可");
         //貸出ID削除後後、詳細画面のままにする
         return "details";
