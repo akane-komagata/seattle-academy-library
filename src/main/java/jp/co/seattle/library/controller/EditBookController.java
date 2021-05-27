@@ -113,12 +113,6 @@ public class EditBookController {
                 return "editBook";
             }
         }
-        //
-        //        if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
-        //                || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
-        //            model.addAttribute("error", "必須項目を入力してください");
-        //            return "editBook";
-        //        }
 
         try {
             DateFormat df = new SimpleDateFormat("yyyyMMdd");

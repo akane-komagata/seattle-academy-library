@@ -99,7 +99,7 @@ public class BulkBookController {
                 }
             }
             //エラーメッセージの表示
-            if (!(errorlist.size() == 0)) {
+            if (errorlist.size() > 0) {
                 model.addAttribute("errorlist", errorlist);
                 return "bulkBook";
             }
