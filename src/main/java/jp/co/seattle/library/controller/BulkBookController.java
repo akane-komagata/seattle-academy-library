@@ -98,11 +98,12 @@ public class BulkBookController {
                     errorlist.add(number + "行目のISBNの桁数または半角数字が正しくありません");
                 }
             }
-                //エラーメッセージの表示
-                if (!(errorlist.size() == 0)) {
-                    model.addAttribute("errorlist", errorlist);
-                    return "bulkBook";
-                }
+            //エラーメッセージの表示
+            if (errorlist.size() > 0) {
+                model.addAttribute("errorlist", errorlist);
+                return "bulkBook";
+            }
+
 
             for (int i = 0; i < booklist.size(); i++) {
                 BookDetailsInfo bookInfo = new BookDetailsInfo();
@@ -117,6 +118,9 @@ public class BulkBookController {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (ArrayIndexOutOfBoundsException e) {
+            model.addAttribute("errorlist", "256文字以上のcsvファイルは登録できません");
+            return "bulkBook";
         }
         model.addAttribute("resultMessage", "登録完了");
 

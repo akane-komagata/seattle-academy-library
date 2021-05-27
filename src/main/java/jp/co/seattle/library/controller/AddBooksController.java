@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -71,7 +72,19 @@ public class AddBooksController {
         bookInfo.setDescription(description);
         bookInfo.setPublisher(publisher);
         bookInfo.setPublishDate(publishDate);
-        bookInfo.setIsbn(isbn);
+
+        //isbnに値が入ってなかったらnullを表示
+        if (isbn.isEmpty()) {
+            bookInfo.setIsbn(null);
+        } else {
+            bookInfo.setIsbn(isbn);
+        }
+
+        if (description.isEmpty()) {
+            bookInfo.setDescription(null);
+        } else {
+            bookInfo.setDescription(description);
+        }
 
         // クライアントのファイルシステムにある元のファイル名を設定する
         String thumbnail = file.getOriginalFilename();
@@ -94,12 +107,13 @@ public class AddBooksController {
                 return "addBook";
             }
         }
-        
+
         if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
                 || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
             model.addAttribute("error", "必須項目を入力してください");
             return "addBook";
         }
+
 
         try {
             DateFormat df = new SimpleDateFormat("yyyyMMdd");
@@ -119,11 +133,17 @@ public class AddBooksController {
                      }
 
         // 書籍情報を新規登録する
+        try {
         booksService.registBook(bookInfo);
         int bookMaxId = booksService.getBookId();
         model.addAttribute("lendingStatus", "貸出可");
         model.addAttribute("resultMessage", "登録完了");
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookMaxId));
+
+
+    } catch (DataIntegrityViolationException e) {
+        model.addAttribute("error", " 256文字以上は登録できません");
+    }
 
         // TODO 登録した書籍の詳細情報を表示するように実装
 
