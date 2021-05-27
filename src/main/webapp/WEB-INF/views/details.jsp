@@ -66,11 +66,21 @@
                 </div>
                 <div>
                     <span>ISBN</span>
+                    <c:if test="${bookDetailsInfo.isbn == 'null'}">
+                    <p> </p>
+                    </c:if>
+                    <c:if test="${bookDetailsInfo.isbn != 'null'}">
                     <p>${bookDetailsInfo.isbn}</p>
+                    </c:if>
                 </div>
                 <div>
                     <span>説明文</span>
+                    <c:if test="${bookDetailsInfo.description == 'null'}">
+                    <p> </p>
+                    </c:if>
+                    <c:if test="${bookDetailsInfo.description != 'null'}">
                     <p>${bookDetailsInfo.description}</p>
+                    </c:if>
                 </div>
             </div>
         </div>

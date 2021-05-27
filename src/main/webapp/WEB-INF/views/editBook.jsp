@@ -54,55 +54,55 @@
                     <div>
                         <span>書籍名</span><span class="care care2">必須</span>
                         <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "title" value = "${bookDetailsInfo.title}"> 
+                            <input type = "text" name = "title" value = "${bookDetailsInfo.title}" required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="title" autocomplete="off">
+                            <input type="text" name="title" autocomplete="off" required>
                         </c:if>
                     </div>
                     <div>
                         <span>著者名</span><span class="care care2">必須</span>
                          <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "author" value = "${bookDetailsInfo.author}"> 
+                            <input type = "text" name = "author" value = "${bookDetailsInfo.author}" required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="author" autocomplete="off">
+                            <input type="text" name="author" autocomplete="off" required>
                         </c:if>
                     </div>
                     <div>
                         <span>出版社</span><span class="care care2">必須</span>
                          <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "publisher" value = "${bookDetailsInfo.publisher}"> 
+                            <input type = "text" name = "publisher" value = "${bookDetailsInfo.publisher}" required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="publisher">
+                            <input type="text" name="publisher" required>
                         </c:if>
                     </div>
                     <div>
                         <span>出版日</span><span class="care care2">必須</span>
                          <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "publish_date" value = "${bookDetailsInfo.publishDate}"> 
+                            <input type = "text" name = "publish_date" value = "${bookDetailsInfo.publishDate}"required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="publish_date">
+                            <input type="text" name="publish_date"required>
                         </c:if>  
                     </div>
                     <div>
                         <span>ISBN</span><span class="care care1">任意</span>
                          <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "isbn" value = "${bookDetailsInfo.isbn}"> 
+                            <input type = "text" name = "isbn" value = "${bookDetailsInfo.isbn}" required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="isbn">
+                            <input type="text" name="isbn" required>
                         </c:if>
                     </div>
                     <div>
                         <span>説明文</span><span class="care care1">任意</span>
                          <c:if test = "${!empty bookDetailsInfo}">
-                            <input type = "text" name = "description" value = "${bookDetailsInfo.description}"> 
+                            <input type = "text" name = "description" value = "${bookDetailsInfo.description}" required> 
                         </c:if>
                         <c:if test="${empty bookDetailsInfo}">
-                            <input type="text" name="description">
+                            <input type="text" name="description" required>
                         </c:if>
                     </div>
                     <input type="hidden" id="bookId" name="bookId" value="${bookDetailsInfo.bookId}">

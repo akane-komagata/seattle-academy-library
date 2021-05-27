@@ -8,6 +8,7 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -15,8 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.mysql.jdbc.StringUtils;
 
 import jp.co.seattle.library.dto.BookDetailsInfo;
 import jp.co.seattle.library.service.BooksService;
@@ -114,12 +113,12 @@ public class EditBookController {
                 return "editBook";
             }
         }
-
-        if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
-                || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
-            model.addAttribute("error", "必須項目を入力してください");
-            return "editBook";
-        }
+        //
+        //        if (StringUtils.isNullOrEmpty(title) || StringUtils.isNullOrEmpty(author)
+        //                || StringUtils.isNullOrEmpty(publisher) || StringUtils.isNullOrEmpty(publishDate)) {
+        //            model.addAttribute("error", "必須項目を入力してください");
+        //            return "editBook";
+        //        }
 
         try {
             DateFormat df = new SimpleDateFormat("yyyyMMdd");
@@ -138,7 +137,10 @@ public class EditBookController {
             return "editBook";
         }
 
+
         // 書籍情報を新規登録する
+
+        try {
         booksService.editBook(bookInfo);
 
         int number = rentService.rentCount(bookId);
@@ -151,6 +153,9 @@ public class EditBookController {
         }
 
         model.addAttribute("bookDetailsInfo", booksService.getBookInfo(bookId));
+    } catch (DataIntegrityViolationException e) {
+        model.addAttribute("error", " 256文字以上は登録できません");
+    }
         //  詳細画面に遷移する
         return "details";
     }
